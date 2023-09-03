@@ -6,8 +6,8 @@ import (
   "os"
   "encoding/json"
 
-  "github.com/jack/kv/kv"
-  "github.com/jack/kv/db"
+  "github.com/halja7/kv/kv"
+  "github.com/halja7/kv/db"
 )
 
 func TestMain(m *testing.M) {

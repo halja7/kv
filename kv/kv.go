@@ -9,6 +9,12 @@ type store struct {
   Db Persistence
 }
 
+type KeyValue struct {
+  Key string
+  Value string
+  Op string
+}
+
 type Persistence interface {
   Flush(map[string]string) error
   Readall() (map[string]string, error)
@@ -35,14 +41,16 @@ func NewStore(p Persistence) (*store, error) {
   }, nil
 }
 
-func (s *store) Set(key, value string) { 
+func (s *store) Set(key, value string) error { 
   s.Data[key] = value
   if s.Db != nil {
     err := s.Db.Flush(s.Data)
     if err != nil {
-      fmt.Printf("Error flushing to disk %v\n", err)
+      return fmt.Errorf("Error flushing to disk %v\n", err)
     }
   }
+
+  return nil
 }
 
 func (s *store) Get(key string) string { 

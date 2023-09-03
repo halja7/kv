@@ -33,8 +33,13 @@ func (db *Db) Flush(data map[string]string) error {
 func (db *Db) Readall() (map[string]string, error) {
   f, err := os.ReadFile(db.path)
   if err != nil {
-    fmt.Println(err)
-    return nil, err
+    data, _ := json.Marshal(map[string]string{})
+    err = os.WriteFile(db.path, data, 0644)
+    if err != nil {
+      return nil, err
+    } 
+
+    return map[string]string{}, nil
   }
 
   var data map[string]string
