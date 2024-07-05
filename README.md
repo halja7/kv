@@ -1,9 +1,8 @@
 # Key Value store
 
-
 1. Make a key value store
 2. Make it persist
-3. (future) There may be some tasks that execute
+3. (future) There may be some tasks that execute reminders (if a reminder flag with date is supplied).
 
 ## How do we persist this data
 
@@ -11,7 +10,7 @@
 2. The store shouldn't have to know that it's connected to a disk file
 
 
-Read operations
+*Read operations*
 
 0. On open, read from file and hydrate in-memory map `OpenStore(filename string)`
     - If not there, it's a new store
@@ -19,7 +18,7 @@ Read operations
     1. If not there, read from file
     2. Else, return value from map
 
-Write operations
+*Write operations*
 
 0. Need a persist to disk operation (Flush) (user shouldn't have to call it)
 1. When?

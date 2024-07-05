@@ -24,20 +24,21 @@ func main() {
 		os.Exit(1)
 	}
 
-	if input.Op == "set" {
+	switch input.Op {
+	case "set":
 		err := store.Set(input.Key, input.Value)
 		if err != nil {
 			fmt.Println("Something went terribly wrong.")
 			os.Exit(1)
 		}
-	} else if input.Op == "get" {
+	case "get":
 		v := store.Get(input.Key)
 		if v == "" {
 			fmt.Println("(nil)")
 		} else {
 			fmt.Println(v)
 		}
-	} else {
+	default:
 		fmt.Println("Something went terribly wrong.")
 		os.Exit(1)
 	}
