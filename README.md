@@ -7,7 +7,7 @@
 
 ## How do we persist this data
 
-1. Probably initially persist to a file (maybe postgres irl)
+1. Probably initially persist to a file (maybe sqlite irl)
 2. The store shouldn't have to know that it's connected to a disk file
 
 
